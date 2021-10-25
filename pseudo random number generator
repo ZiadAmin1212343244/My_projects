@@ -1,0 +1,41 @@
+#this is the seed function that generates random numbers from input
+def seed_generator_input():
+    while True:
+        seed = int(input("Please enter the seed : "))
+        for i in range(1000):
+            seed = (a * seed + c) % m
+            print(seed)
+        ans = input("do you want to complete ? [y/n]")
+        if ans == 'n' or ans == 'N':
+            print("thank you")
+            break
+        else:
+            continue
+
+#this is the seed function that generates random numbers from file
+def seed_generator_file():
+    path = input("enter the file path :  ")
+    with open(path,"r") as file:
+        while True:
+            seed = int(file.readline())
+            for i in range(1000):
+                seed = (a * seed + c) % m
+                print(seed)
+            ans = input(" do you want to read another seed ? [Y/n]")
+            if ans == 'n' or ans == 'N':
+                print("thank you")
+                break
+            else:
+                continue
+#ask the user whether to enter file name or input the seeds
+def choose_method():
+    while True:
+        question = input("Do you want to enter input of file name ? [input/file]")
+        if question == "input":
+            seed_generator_input()
+        elif question == "file":
+            seed_generator_file()
+        else:
+            print("Try again")
+
+choose_method()
